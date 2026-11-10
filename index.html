@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제주도 관광 안내</title>
+  <style>
+    :root {
+      --sea: #0b6e8a;
+      --sea-dark: #07495c;
+      --orange: #f28c28;
+      --leaf: #3f8f5b;
+      --bg: #f6faf9;
+      --text: #1f2d33;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+    header.nav {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 6vw;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 1px 8px rgba(0,0,0,.08);
+    }
+    .logo { font-weight: 700; font-size: 1.2rem; color: var(--sea); }
+    nav a {
+      margin-left: 20px; text-decoration: none;
+      color: var(--text); font-weight: 600; font-size: .95rem;
+    }
+    nav a:hover { color: var(--orange); }
+    .hero {
+      min-height: 70vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; color: #fff; padding: 0 6vw;
+      background: linear-gradient(180deg, rgba(7,73,92,.55), rgba(11,110,138,.75)),
+                  linear-gradient(135deg, #5cc6d9 0%, #0b6e8a 55%, #07495c 100%);
+    }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); letter-spacing: 2px; }
+    .hero p { margin-top: 12px; font-size: clamp(1rem, 2.4vw, 1.3rem); max-width: 620px; }
+    .btn {
+      display: inline-block; margin-top: 28px; padding: 12px 30px;
+      background: var(--orange); color: #fff; border-radius: 30px;
+      text-decoration: none; font-weight: 700;
+      transition: transform .2s;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    section { padding: 70px 6vw; max-width: 1100px; margin: 0 auto; }
+    section h2 {
+      font-size: 1.8rem; color: var(--sea-dark); margin-bottom: 8px;
+    }
+    section .sub { color: #5b6b72; margin-bottom: 32px; }
+    .grid {
+      display: grid; gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .card {
+      background: var(--card); border-radius: 14px; overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,.08);
+      transition: transform .2s;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .thumb {
+      height: 130px; display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+    }
+    .t1 { background: linear-gradient(135deg, #8fd3f4, #84fab0); }
+    .t2 { background: linear-gradient(135deg, #f6d365, #fda085); }
+    .t3 { background: linear-gradient(135deg, #a1c4fd, #c2e9fb); }
+    .t4 { background: linear-gradient(135deg, #d4fc79, #96e6a1); }
+    .t5 { background: linear-gradient(135deg, #fbc2eb, #a6c1ee); }
+    .t6 { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+    .card .body { padding: 18px; }
+    .card h3 { color: var(--sea); margin-bottom: 6px; }
+    .card p { font-size: .93rem; color: #4a5a61; }
+    .tag {
+      display: inline-block; margin-top: 10px; padding: 2px 10px;
+      border-radius: 12px; font-size: .78rem;
+      background: #e3f3ef; color: var(--leaf); font-weight: 600;
+    }
+    .food { background: #fff; max-width: none; }
+    .food .inner { max-width: 1100px; margin: 0 auto; }
+    .food .card { background: var(--bg); }
+    .course {
+      background: var(--card); border-left: 5px solid var(--orange);
+      border-radius: 10px; padding: 18px 22px; margin-bottom: 16px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.06);
+    }
+    .course h3 { color: var(--sea-dark); }
+    .course ol { margin: 8px 0 0 20px; }
+    .tips ul { margin-left: 20px; }
+    .tips li { margin-bottom: 8px; }
+    footer {
+      text-align: center; padding: 30px 6vw;
+      background: var(--sea-dark); color: #cfe6ec; font-size: .9rem;
+    }
+    @media (max-width: 600px) {
+      nav a { margin-left: 12px; font-size: .85rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="logo">🌴 Jeju Travel</div>
+    <nav>
+      <a href="#spots">명소</a>
+      <a href="#food">맛집</a>
+      <a href="#course">추천 코스</a>
+      <a href="#tips">여행 팁</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>제주도에 오신 것을 환영합니다</h1>
+    <p>푸른 바다, 한라산, 오름과 돌담길까지. 삼다도의 매력을 만나보세요.</p>
+    <a class="btn" href="#spots">관광지 둘러보기</a>
+  </div>
+
+  <section id="spots">
+    <h2>대표 관광지</h2>
+    <p class="sub">제주에 오면 꼭 들러야 할 명소들</p>
+    <div class="grid">
+      <div class="card">
+        <div class="thumb t1">🌋</div>
+        <div class="body">
+          <h3>성산일출봉</h3>
+          <p>바다 위에 솟은 분화구로, 유네스코 세계자연유산입니다. 일출 명소로 유명합니다.</p>
+          <span class="tag">서귀포시 성산읍</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="thumb t3">⛰️</div>
+        <div class="body">
+          <h3>한라산</h3>
+          <p>해발 1,947m, 대한민국에서 가장 높은 산입니다. 사계절 다른 풍경의 등산 코스가 있습니다.</p>
+          <span class="tag">한라산국립공원</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="thumb t2">🌊</div>
+        <div class="body">
+          <h3>협재해변</h3>
+          <p>에메랄드빛 바다와 하얀 모래가 펼쳐진 해변으로, 멀리 비양도가 보입니다.</p>
+          <span class="tag">제주시 한림읍</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="thumb t4">🌿</div>
+        <div class="body">
+          <h3>비자림</h3>
+          <p>수령 500~800년의 비자나무가 모인 숲입니다. 피톤치드 가득한 산책을 즐겨보세요.</p>
+          <span class="tag">제주시 구좌읍</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="thumb t5">💧</div>
+        <div class="body">
+          <h3>천지연폭포</h3>
+          <p>울창한 숲 사이로 떨어지는 폭포로, 밤에는 조명이 더해져 더욱 운치 있습니다.</p>
+          <span class="tag">서귀포시</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="thumb t6">🕳️</div>
+        <div class="body">
+          <h3>만장굴</h3>
+          <p>세계적 규모의 용암동굴로, 신비로운 지하 세계를 체험할 수 있습니다.</p>
+          <span class="tag">제주시 구좌읍</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="food" class="food">
+    <div class="inner">
+      <h2>제주의 맛</h2>
+      <p class="sub">제주에서만 맛볼 수 있는 향토 음식</p>
+      <div class="grid">
+        <div class="card">
+          <div class="body">
+            <h3>🐖 흑돼지 구이</h3>
+            <p>쫄깃하고 고소한 제주 흑돼지를 숯불에 구워 멜젓과 함께 즐깁니다.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <h3>🐟 갈치조림</h3>
+            <p>제주 은갈치와 무를 넣고 칼칼하게 졸여낸 대표 향토 음식입니다.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <h3>🍜 고기국수</h3>
+            <p>돼지 사골 육수에 굵은 면과 수육을 올린 든든한 한 그릇입니다.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <h3>🍊 한라봉·감귤</h3>
+            <p>새콤달콤한 제주 감귤류로 만든 주스, 디저트도 놓치지 마세요.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="course">
+    <h2>추천 2박 3일 코스</h2>
+    <p class="sub">처음 방문하는 분들을 위한 기본 일정</p>
+    <div class="course">
+      <h3>1일차 · 제주시 &amp; 서쪽</h3>
+      <ol>
+        <li>제주공항 도착, 렌터카 수령</li>
+        <li>협재해변 산책</li>
+        <li>한림공원 또는 오설록 티뮤지엄</li>
+        <li>흑돼지 저녁 식사</li>
+      </ol>
+    </div>
+    <div class="course">
+      <h3>2일차 · 서귀포 &amp; 남쪽</h3>
+      <ol>
+        <li>천지연폭포</li>
+        <li>주상절리대</li>
+        <li>한라산 영실 코스 또는 올레길 걷기</li>
+        <li>갈치조림 저녁 식사</li>
+      </ol>
+    </div>
+    <div class="course">
+      <h3>3일차 · 동쪽</h3>
+      <ol>
+        <li>성산일출봉 일출 감상</li>
+        <li>만장굴 &amp; 비자림</li>
+        <li>고기국수로 점심 후 공항 이동</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="tips" class="tips">
+    <h2>여행 팁</h2>
+    <p class="sub">알아두면 편한 정보</p>
+    <ul>
+      <li><strong>추천 시기:</strong> 봄(유채꽃), 가을(억새)이 가장 좋고, 여름은 해수욕을 즐기기 좋습니다.</li>
+      <li><strong>교통:</strong> 대중교통이 제한적이어서 렌터카 이용을 권장합니다.</li>
+      <li><strong>날씨:</strong> 바람과 비가 잦아 여벌 옷과 우산을 준비하세요.</li>
+      <li><strong>예약:</strong> 성수기에는 숙소, 렌터카, 인기 식당을 미리 예약하세요.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2026 Jeju Travel Guide · 아름다운 제주에서 즐거운 여행 되세요 🌺</p>
+  </footer>
+</body>
+</html>
